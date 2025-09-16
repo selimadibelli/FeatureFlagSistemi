@@ -34,7 +34,7 @@ Content-Type: application/json
 }
 
 ### Check Feature Flag - Success Case
-POST http://localhost:5000/api/feature-flag-check/check
+POST http://localhost:5000/api/feature-flags/validation
 Content-Type: application/json
 
 {
@@ -45,7 +45,7 @@ Content-Type: application/json
 }
 
 ### Check Feature Flag - Not in Pilot
-POST http://localhost:5000/api/feature-flag-check/check
+POST http://localhost:5000/api/feature-flags/validation
 Content-Type: application/json
 
 {
@@ -56,7 +56,7 @@ Content-Type: application/json
 }
 
 ### Check Feature Flag - Version Too Low
-POST http://localhost:5000/api/feature-flag-check/check
+POST http://localhost:5000/api/feature-flags/validation
 Content-Type: application/json
 
 {
@@ -67,7 +67,7 @@ Content-Type: application/json
 }
 
 ### Check Multiple Feature Flags
-POST http://localhost:5000/api/feature-flag-check/check-multiple
+POST http://localhost:5000/api/feature-flags/validation/batch
 Content-Type: application/json
 
 [
@@ -108,10 +108,11 @@ Content-Type: application/json
 }
 
 ### Refresh Cache
-POST http://localhost:5000/api/feature-flags/refresh-cache
+POST http://localhost:5000/api/feature-flags/cache
 
 ### Delete Feature Flag
 DELETE http://localhost:5000/api/feature-flags/5
 
 ### Remove from Pilot Whitelist
 DELETE http://localhost:5000/api/feature-flags/pilot-whitelist/4
+
