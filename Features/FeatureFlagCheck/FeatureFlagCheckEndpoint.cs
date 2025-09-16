@@ -8,15 +8,15 @@ public static class FeatureFlagCheckEndpoint
 {
     public static void MapFeatureFlagCheckEndpoints(this WebApplication app)
     {
-        var group = app.MapGroup("/api/feature-flag-check")
+        var group = app.MapGroup("/api/feature-flags")
             .WithTags("Feature Flag Check");
 
-        group.MapPost("/check", CheckFeatureFlag)
+        group.MapPost("/validation", CheckFeatureFlag)
             .WithName("CheckFeatureFlag")
             .WithSummary("Feature flag kontrolü yapar")
             .WithDescription("Belirtilen kullanıcı için feature flag'in aktif olup olmadığını kontrol eder");
 
-        group.MapPost("/check-multiple", CheckMultipleFeatureFlags)
+        group.MapPost("/validation/batch", CheckMultipleFeatureFlags)
             .WithName("CheckMultipleFeatureFlags")
             .WithSummary("Birden fazla feature flag kontrolü yapar")
             .WithDescription("Belirtilen kullanıcı için birden fazla feature flag'in aktif olup olmadığını kontrol eder");
@@ -80,3 +80,4 @@ public static class FeatureFlagCheckEndpoint
         }
     }
 }
+
