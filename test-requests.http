@@ -1,0 +1,117 @@
+### Feature Flag System API Test Requests
+
+### Health Check
+GET http://localhost:5000/health
+
+### Get All Feature Flags
+GET http://localhost:5000/api/feature-flags
+
+### Get Feature Flag by ID
+GET http://localhost:5000/api/feature-flags/1
+
+### Get Feature Flag by Name
+GET http://localhost:5000/api/feature-flags/by-name/OpenBankingPilot
+
+### Create New Feature Flag
+POST http://localhost:5000/api/feature-flags
+Content-Type: application/json
+
+{
+  "name": "TestFeature",
+  "description": "Test özelliği",
+  "isEnabled": true,
+  "createdBy": "test-user"
+}
+
+### Update Feature Flag
+PUT http://localhost:5000/api/feature-flags/1
+Content-Type: application/json
+
+{
+  "description": "Güncellenmiş açıklama",
+  "isEnabled": true,
+  "updatedBy": "test-user"
+}
+
+### Check Feature Flag - Success Case
+POST http://localhost:5000/api/feature-flag-check/check
+Content-Type: application/json
+
+{
+  "featureName": "OpenBankingPilot",
+  "userIdentifier": "CUST001",
+  "userType": "Customer",
+  "appVersion": "1.2.0"
+}
+
+### Check Feature Flag - Not in Pilot
+POST http://localhost:5000/api/feature-flag-check/check
+Content-Type: application/json
+
+{
+  "featureName": "OpenBankingPilot",
+  "userIdentifier": "CUST999",
+  "userType": "Customer",
+  "appVersion": "1.2.0"
+}
+
+### Check Feature Flag - Version Too Low
+POST http://localhost:5000/api/feature-flag-check/check
+Content-Type: application/json
+
+{
+  "featureName": "OpenBankingPilot",
+  "userIdentifier": "CUST001",
+  "userType": "Customer",
+  "appVersion": "1.0.0"
+}
+
+### Check Multiple Feature Flags
+POST http://localhost:5000/api/feature-flag-check/check-multiple
+Content-Type: application/json
+
+[
+  {
+    "featureName": "OpenBankingPilot",
+    "userIdentifier": "CUST001",
+    "userType": "Customer",
+    "appVersion": "1.2.0"
+  },
+  {
+    "featureName": "SealPilot",
+    "userIdentifier": "CUST002",
+    "userType": "Customer",
+    "appVersion": "1.1.0"
+  },
+  {
+    "featureName": "SoftLoginPilot",
+    "userIdentifier": "EMP001",
+    "userType": "Employee",
+    "appVersion": "1.0.0"
+  }
+]
+
+### Get Pilot Whitelist for Feature Flag
+GET http://localhost:5000/api/feature-flags/1/pilot-whitelist
+
+### Add User to Pilot Whitelist
+POST http://localhost:5000/api/feature-flags/pilot-whitelist
+Content-Type: application/json
+
+{
+  "featureFlagId": 1,
+  "userIdentifier": "CUST003",
+  "userType": "Customer",
+  "minVersion": "1.1.0",
+  "expiresAt": "2024-12-31T23:59:59Z",
+  "createdBy": "admin"
+}
+
+### Refresh Cache
+POST http://localhost:5000/api/feature-flags/refresh-cache
+
+### Delete Feature Flag
+DELETE http://localhost:5000/api/feature-flags/5
+
+### Remove from Pilot Whitelist
+DELETE http://localhost:5000/api/feature-flags/pilot-whitelist/4
