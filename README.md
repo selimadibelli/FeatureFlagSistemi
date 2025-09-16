@@ -68,8 +68,8 @@ Bu proje, dolandırıcılık önleme sistemleri için pilot whitelist yönetimi 
 ## API Endpoints
 
 ### Feature Flag Check
-- `POST /api/feature-flag-check/check` - Tek feature flag kontrolü
-- `POST /api/feature-flag-check/check-multiple` - Çoklu feature flag kontrolü
+- `POST /api/feature-flags/validation` - Tek feature flag kontrolü
+- `POST /api/feature-flags/validation/batch` - Çoklu feature flag kontrolü
 
 ### Feature Flag Management
 - `GET /api/feature-flags` - Tüm feature flag'leri listele
@@ -85,7 +85,7 @@ Bu proje, dolandırıcılık önleme sistemleri için pilot whitelist yönetimi 
 - `DELETE /api/feature-flags/pilot-whitelist/{id}` - Pilot whitelist'ten çıkar
 
 ### Cache Management
-- `POST /api/feature-flags/refresh-cache` - Cache'i yenile
+- `POST /api/feature-flags/cache` - Cache'i yenile
 
 ## Kullanım Örnekleri
 
@@ -190,3 +190,4 @@ dotnet test --filter Category=Integration
 ## Lisans
 
 Bu proje staj projesi olarak geliştirilmiştir.
+
