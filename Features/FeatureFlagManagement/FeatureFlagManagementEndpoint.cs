@@ -50,7 +50,7 @@ public static class FeatureFlagManagementEndpoint
             .WithSummary("Pilot whitelist'ten kullanıcı çıkarır");
 
         // Cache operations
-        group.MapPost("/refresh-cache", RefreshCache)
+        group.MapPost("/cache", RefreshCache)
             .WithName("RefreshCache")
             .WithSummary("Cache'i yeniler");
     }
@@ -232,3 +232,4 @@ public static class FeatureFlagManagementEndpoint
         }
     }
 }
+
