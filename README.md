@@ -92,7 +92,7 @@ Bu proje, dolandırıcılık önleme sistemleri için pilot whitelist yönetimi 
 ### Feature Flag Kontrolü
 
 ```json
-POST /api/feature-flag-check/check
+POST /api/feature-flags/validation
 {
   "featureName": "OpenBankingPilot",
   "userIdentifier": "CUST001",
@@ -190,4 +190,5 @@ dotnet test --filter Category=Integration
 ## Lisans
 
 Bu proje staj projesi olarak geliştirilmiştir.
+
 
